@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx86k84ly1dpm"]
+
+[ext_resource type="Script" uid="uid://cmg8q2oq4fxng" path="res://title_screen.gd" id="1_05l2w"]
+[ext_resource type="VideoStream" uid="uid://dceg32f7otw3x" path="res://Assets/menu/MENU-INTRO.ogv" id="1_v6p8y"]
+[ext_resource type="Texture2D" uid="uid://3w4bpbfy15nv" path="res://Assets/menu/logo.png" id="2_ig5kc"]
+[ext_resource type="Theme" uid="uid://ckuxb03cgmr5t" path="res://title_screen.tres" id="3_05l2w"]
+
+[sub_resource type="Theme" id="Theme_hafda"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05l2w")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -10.0
+offset_right = 962.13354
+offset_bottom = 980.3572
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.57133085, 0.42890206)
+stream = ExtResource("1_v6p8y")
+autoplay = true
+expand = true
+loop = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -145.0
+offset_right = 67.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_hafda")
+texture = ExtResource("2_ig5kc")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_05l2w")
+text = "Start"
+flat = true
+
+[node name="Opção" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_05l2w")
+text = "Opção"
+flat = true
+
+[node name="Sair" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_05l2w")
+text = "Sair"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Opção" to="." method="_on_opções_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

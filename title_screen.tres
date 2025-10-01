@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ckuxb03cgmr5t"]
+
+[ext_resource type="FontFile" uid="uid://ybawngooe8gm" path="res://Assets/menu/edo_sz/edosz.ttf" id="1_h0gxg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig5kc"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_blend = true
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.1615, 0.30605823, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.39607844, 0.3137255, 1, 1)
+Button/constants/h_separation = 15
+Button/font_sizes/font_size = 70
+Button/fonts/font = ExtResource("1_h0gxg")
+Button/styles/normal = SubResource("StyleBoxFlat_ig5kc")
