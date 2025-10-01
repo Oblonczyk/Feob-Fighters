@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbh7vfwn0itny"]
+
+[ext_resource type="PackedScene" uid="uid://d1nnnjak6u03t" path="res://enemy.tscn" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bgbsiyhnm6qf4" path="res://player.tscn" id="1_vonw3"]
+[ext_resource type="Script" uid="uid://dbjymjugdmj7s" path="res://hit_box.gd" id="3_oi3di"]
+[ext_resource type="Texture2D" uid="uid://bi0s851lcvgcr" path="res://Assets/Stage Layers/IMG_3864.png" id="4_0b4ue"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2txt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0b4ue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
+size = Vector2(61, 239)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0b4ue"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f2txt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
+size = Vector2(430.5, 67)
+
+[node name="Level" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.5, 9.49998)
+scale = Vector2(0.0754552, 0.0567227)
+sprite_frames = SubResource("SpriteFrames_f2txt")
+
+[node name="Player" parent="." instance=ExtResource("1_vonw3")]
+position = Vector2(181, 11)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
+position = Vector2(-4, 7)
+zoom = Vector2(3, 3)
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_oi3di")
+metadata/_custom_type_script = "uid://dbjymjugdmj7s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(41, 9)
+shape = SubResource("RectangleShape2D_0b4ue")
+debug_color = Color(0.460321, 0.445986, 1, 0.886275)
+
+[node name="Enemy" parent="." instance=ExtResource("1_0b4ue")]
+position = Vector2(-182, 21)
+player_path = NodePath("../Player")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+material = SubResource("CanvasItemMaterial_0b4ue")
+position = Vector2(-61, 91)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_f2txt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(55.75, 6.5)
+shape = SubResource("RectangleShape2D_1ainy")

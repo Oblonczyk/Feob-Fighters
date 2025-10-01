@@ -1,0 +1,15 @@
+# Godot specific ignores
+.godot/
+!.godot/user_settings.tres
+!.godot/user_settings.cfg
+!.godot/export_presets.cfg
+
+# Mono specific ignores
+.mono/
+obj/
+bin/
+
+#Asset specific ignore
+.import/
+export_cfg
+export_presets.cfg
