@@ -9,6 +9,9 @@ func enter() -> void:
 	print("Punch State")
 	has_attacked = false
 	
+	# 🔥 MARCA QUE O PLAYER ESTÁ ATACANDO
+	player.set_attacking(true)
+	
 	# Corrige flip da hitbox sem erro de sintaxe
 	hitbox.position.x = abs(hitbox.position.x) * (-1 if sprite_flipped else 1)
 
@@ -22,6 +25,10 @@ func enter() -> void:
 func _on_punch_finished(_anim: String) -> void:
 	has_attacked = true
 
+func exit() -> void:
+	# 🔥 MARCA QUE O PLAYER PAROU DE ATACAR
+	player.set_attacking(false)
+
 func process_input(event: InputEvent) -> State:
 	super.process_input(event)
 	if has_attacked and event.is_action_pressed(movement_key):
@@ -33,6 +40,13 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	# Aplica gravidade mesmo durante o soco no ar
+	var input_direction = Input.get_axis("move_left", "move_right")
+	
+	# 🎯 ATUALIZA DIREÇÃO DO PLAYER
+	if input_direction > 0:
+		player.update_facing_direction(1)  # Direita
+	elif input_direction < 0:
+		player.update_facing_direction(-1)  # Esquerda
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
 	
@@ -48,6 +62,3 @@ func process_physics(delta: float) -> State:
 func process_frame(delta: float) -> State:
 	super.process_frame(delta)
 	return null
-
-func add_game_juice() -> void:
-	camera.set_zoom_str(1.15)

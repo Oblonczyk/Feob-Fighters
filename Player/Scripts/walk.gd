@@ -13,6 +13,13 @@ func exit() -> void:
 	player.velocity.x = 0.0
 
 func process_physics(delta: float) -> State:
+	var input_direction = Input.get_axis("move_left", "move_right")
+	
+	# 🎯 ATUALIZA DIREÇÃO DO PLAYER
+	if input_direction > 0:
+		player.update_facing_direction(1)  # Direita
+	elif input_direction < 0:
+		player.update_facing_direction(-1)  # Esquerda
 	var dir := 0
 	if Input.is_action_pressed(left_key):
 		dir -= 1
@@ -63,7 +70,7 @@ func process_frame(delta: float) -> State:
 
 func determine_sprite_flipped_from_input() -> void:
 	if Input.is_action_pressed(left_key):
-		sprite_flipped = true
-	elif Input.is_action_pressed(right_key):
 		sprite_flipped = false
+	elif Input.is_action_pressed(right_key):
+		sprite_flipped = true
 	player.sprite.flip_h = sprite_flipped

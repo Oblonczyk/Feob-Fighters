@@ -6,11 +6,19 @@ var has_kicked: bool
 func enter() -> void:
 	print("Kick State")
 	has_kicked = false
+	
+	# 🔥 MARCA QUE O PLAYER ESTÁ ATACANDO
+	player.set_attacking(true)
+	
 	player.animation.play(kick_anim)
 
 	# Espera a animação acabar
 	await player.animation.animation_finished
 	has_kicked = true
+
+func exit() -> void:
+	# 🔥 MARCA QUE O PLAYER PAROU DE ATACAR
+	player.set_attacking(false)
 
 func process_input(event: InputEvent) -> State:
 	super.process_input(event)
@@ -19,6 +27,13 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	# Aplica gravidade para permitir chute no ar
+	var input_direction = Input.get_axis("move_left", "move_right")
+	
+	# 🎯 ATUALIZA DIREÇÃO DO PLAYER
+	if input_direction > 0:
+		player.update_facing_direction(1)  # Direita
+	elif input_direction < 0:
+		player.update_facing_direction(-1)  # Esquerda
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
 
@@ -34,6 +49,3 @@ func process_physics(delta: float) -> State:
 func process_frame(delta: float) -> State:
 	super.process_frame(delta)
 	return null
-
-func add_game_juice() -> void:
-	camera.set_zoom_str(1.15)
