@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ybawngooe8gm"
-path="res://.godot/imported/edosz.ttf-96550398549bcc6e5b320c3679bc0ba2.fontdata"
+path="res://.godot/imported/edosz.ttf-2a8eb0b4e162ee34f4e026c0cfeb008b.fontdata"
 
 [deps]
 
-source_file="res://Assets/menu/edo_sz/edosz.ttf"
-dest_files=["res://.godot/imported/edosz.ttf-96550398549bcc6e5b320c3679bc0ba2.fontdata"]
+source_file="res://assets/menu/edo_sz/edosz.ttf"
+dest_files=["res://.godot/imported/edosz.ttf-2a8eb0b4e162ee34f4e026c0cfeb008b.fontdata"]
 
 [params]
 

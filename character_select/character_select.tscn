@@ -1,0 +1,196 @@
+[gd_scene load_steps=17 format=3 uid="uid://cubxr6yy70uw7"]
+
+[ext_resource type="Script" uid="uid://bqpqn64e63yyj" path="res://character_select/character_select.gd" id="1_461jc"]
+[ext_resource type="Texture2D" uid="uid://dloy7iagtgqxi" path="res://assets/character_select/palceholder.png" id="1_rpq84"]
+[ext_resource type="Texture2D" uid="uid://y7uihf25t14p" path="res://assets/character_select/3d/3d_luis/1.png" id="2_1nrh5"]
+[ext_resource type="Texture2D" uid="uid://k2un2fuumvw3" path="res://assets/character_select/bg_gradient.png" id="2_xo2ej"]
+[ext_resource type="Texture2D" uid="uid://byyk4tmw0xd0r" path="res://assets/character_select/3d/3d_luis/2.png" id="3_v1l5l"]
+[ext_resource type="Texture2D" uid="uid://gvrlxc7y2s68" path="res://assets/character_select/3d/3d_luis/3.png" id="4_orskx"]
+[ext_resource type="Texture2D" uid="uid://c4phrwqwpe5f5" path="res://assets/character_select/3d/3d_luis/4.png" id="5_n8op4"]
+[ext_resource type="Texture2D" uid="uid://bu8f6mgela6mw" path="res://assets/character_select/3d/3d_marudi/3d3.png" id="6_7byap"]
+[ext_resource type="Texture2D" uid="uid://doeh5shbwct1n" path="res://assets/character_select/3d/3d_marudi/3d4.png" id="7_8i7pw"]
+[ext_resource type="Texture2D" uid="uid://jqeti6svgj6u" path="res://assets/character_select/3d/3d_marudi/3d1.png" id="7_461jc"]
+[ext_resource type="Texture2D" uid="uid://d0o8ektt2o2bm" path="res://assets/character_select/3d/3d_marudi/3d2.png" id="8_cl24h"]
+[ext_resource type="Texture2D" uid="uid://cyos3cxfoipp2" path="res://assets/Sprites/char1_portrait.jpg" id="12_iv4bj"]
+[ext_resource type="Texture2D" uid="uid://dhmpflwx7go6s" path="res://assets/Sprites/char4_portrait.jpg" id="13_pm01m"]
+[ext_resource type="Texture2D" uid="uid://cgkyw2ltsry0d" path="res://assets/Sprites/char2_portrait.jpg" id="14_sc7e3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7byap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1nrh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v1l5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_orskx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n8op4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_461jc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_461jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cl24h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7byap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8i7pw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_461jc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 1294.0
+offset_bottom = 1633.0
+texture = ExtResource("2_xo2ej")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -397.0
+offset_top = 13.0
+offset_right = 428.0
+offset_bottom = 372.0
+grow_horizontal = 2
+
+[node name="LeftPlayer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/LeftPlayer"]
+position = Vector2(148.6875, 156.00002)
+scale = Vector2(0.06762431, 0.057750754)
+sprite_frames = SubResource("SpriteFrames_7byap")
+autoplay = "default"
+frame_progress = 0.28504166
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/LeftPlayer"]
+layout_mode = 2
+
+[node name="RightPlayer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/RightPlayer"]
+position = Vector2(709, 167)
+scale = Vector2(0.06888137, 0.0634339)
+sprite_frames = SubResource("SpriteFrames_461jc")
+autoplay = "default"
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/RightPlayer"]
+layout_mode = 2
+
+[node name="VSLabel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 126.0
+offset_right = 736.0
+offset_bottom = 232.0
+size_flags_vertical = 4
+texture = ExtResource("1_rpq84")
+expand_mode = 2
+
+[node name="BottomMenu" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 182.0
+offset_right = 259.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="BottomMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "RETORNAR"
+
+[node name="Button2" type="Button" parent="BottomMenu"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "CONFIGURAÇÃO"
+
+[node name="Button3" type="Button" parent="BottomMenu"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "CENARIOS"
+
+[node name="Button4" type="Button" parent="BottomMenu"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "CONTROLE"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 357.0
+offset_right = 459.0
+offset_bottom = 458.0
+texture_normal = ExtResource("12_iv4bj")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 359.0
+offset_right = 828.0
+offset_bottom = 460.0
+texture_normal = ExtResource("12_iv4bj")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 894.0
+offset_top = 363.0
+offset_right = 999.0
+offset_bottom = 464.0
+texture_normal = ExtResource("13_pm01m")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 357.0
+offset_right = 625.0
+offset_bottom = 458.0
+texture_normal = ExtResource("14_sc7e3")
+ignore_texture_size = true
+stretch_mode = 4

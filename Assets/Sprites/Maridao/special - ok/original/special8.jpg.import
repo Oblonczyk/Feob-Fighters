@@ -3,21 +3,23 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://br8jfcdnhrvpu"
-path="res://.godot/imported/special8.jpg-8f9431772e15b654f1ff28ffbd10d68d.ctex"
+path="res://.godot/imported/special8.jpg-6199df509d2dcd55e6f859c8122b2af1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Maridao/special - ok/original/special8.jpg"
-dest_files=["res://.godot/imported/special8.jpg-8f9431772e15b654f1ff28ffbd10d68d.ctex"]
+source_file="res://assets/Sprites/Maridao/special - ok/original/special8.jpg"
+dest_files=["res://.godot/imported/special8.jpg-6199df509d2dcd55e6f859c8122b2af1.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
