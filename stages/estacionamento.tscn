@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg5o77vlj1b3q"]
+
+[ext_resource type="Texture2D" uid="uid://daqa16a08dslr" path="res://assets/Stage/btn_estacionamento.jpg" id="1_8lrhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1svlq"]
+size = Vector2(1443.3937, 125.853584)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtdnx"]
+radius = 9.049421
+height = 990.8813
+
+[node name="estacionamento" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(639.25006, 357.5)
+scale = Vector2(0.884375, 0.662037)
+texture = ExtResource("1_8lrhw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(-722.828, -540)
+scale = Vector2(1.1311862, 1.5104896)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(638, 671.4024)
+scale = Vector2(0.8840277, 0.66203696)
+shape = SubResource("RectangleShape2D_1svlq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(1271, 327)
+scale = Vector2(0.8840277, 0.6620369)
+shape = SubResource("CapsuleShape2D_jtdnx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(10, 326)
+scale = Vector2(0.8840277, 0.66203696)
+shape = SubResource("CapsuleShape2D_jtdnx")
