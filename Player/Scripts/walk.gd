@@ -1,7 +1,7 @@
 class_name PlayerWalkState
 extends PlayerState
 
-const SPEED: float = 75.0
+const SPEED: float = 100.0
 
 func enter() -> void:
 	print("Walk State")
@@ -13,6 +13,13 @@ func exit() -> void:
 	player.velocity.x = 0.0
 
 func process_physics(delta: float) -> State:
+	var input_direction = Input.get_axis("move_left", "move_right")
+	
+	# 🎯 ATUALIZA DIREÇÃO DO PLAYER
+	if input_direction > 0:
+		player.update_facing_direction(1)  # Direita
+	elif input_direction < 0:
+		player.update_facing_direction(-1)  # Esquerda
 	var dir := 0
 	if Input.is_action_pressed(left_key):
 		dir -= 1
