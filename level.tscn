@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbh7vfwn0itny"]
+[gd_scene load_steps=11 format=3 uid="uid://cbh7vfwn0itny"]
 
 [ext_resource type="PackedScene" uid="uid://d1nnnjak6u03t" path="res://enemy.tscn" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://bgbsiyhnm6qf4" path="res://player.tscn" id="1_vonw3"]
 [ext_resource type="Texture2D" uid="uid://bi0s851lcvgcr" path="res://Assets/Stage Layers/IMG_3864.png" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bkufcu0jypesn" path="res://hud.tscn" id="4_f2txt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f2txt"]
 animations = [{
@@ -26,7 +27,7 @@ size = Vector2(569, 207)
 size = Vector2(269, 410)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2txt"]
-size = Vector2(239.5, 420)
+size = Vector2(241.5, 420)
 
 [node name="Level" type="Node2D"]
 
@@ -35,14 +36,14 @@ position = Vector2(-5.5, 9.49998)
 scale = Vector2(0.0754552, 0.0567227)
 sprite_frames = SubResource("SpriteFrames_f2txt")
 
-[node name="Player" parent="." instance=ExtResource("1_vonw3")]
+[node name="Player" parent="." groups=["fighters"] instance=ExtResource("1_vonw3")]
 position = Vector2(181, 11)
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
 position = Vector2(-4, 7)
 zoom = Vector2(3, 3)
 
-[node name="Enemy" parent="." instance=ExtResource("1_0b4ue")]
+[node name="Enemy" parent="." groups=["fighters"] instance=ExtResource("1_0b4ue")]
 position = Vector2(-182, 21)
 player_path = NodePath("../Player")
 
@@ -75,5 +76,10 @@ collision_layer = 271
 collision_mask = 271
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(307.75, -2)
+position = Vector2(306.75, -2)
 shape = SubResource("RectangleShape2D_f2txt")
+
+[node name="HUD" parent="." instance=ExtResource("4_f2txt")]
+layer = 3
+player1_path = NodePath("../Player")
+player2_path = NodePath("../Enemy")

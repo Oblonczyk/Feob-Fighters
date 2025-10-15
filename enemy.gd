@@ -42,6 +42,12 @@ var block_cooldown: float = 0.0
 var block_duration: float = 1.5
 var block_start_time: float = 0.0
 
+# ❤️ VIDA E ⚡ PODER
+var life: float = 100.0
+var power: float = 0.0
+@onready var hud = get_tree().root.get_node_or_null("Level/HUD")
+
+# -----------------------------------------------------------
 func _ready() -> void:
 	print("Enemy _ready called")
 	
@@ -62,12 +68,17 @@ func _ready() -> void:
 	print("StateMachine initialized successfully")
 	print("AI Personality: ", AI_PERSONALITY.keys()[personality])
 
+	update_hud()  # Atualiza HUD no início
+
+# -----------------------------------------------------------
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
+# -----------------------------------------------------------
+# 🧠 IA - utilitários
 func distance_to_player() -> float:
 	if not is_instance_valid(player):
 		return INF
@@ -112,12 +123,14 @@ func get_personality_modifiers() -> Dictionary:
 		_:
 			return {"attack_bias": 1.0, "block_bias": 1.0, "move_bias": 1.0}
 
+# -----------------------------------------------------------
 # 🔥 EVITA ATRAVESSAR DURANTE ATAQUE
 func enable_collision(value: bool) -> void:
 	if is_instance_valid(collision_shape):
 		collision_shape.disabled = not value
 
-# SISTEMA DE ATAQUE
+# -----------------------------------------------------------
+# ⚔️ ATAQUES
 func can_attack() -> bool:
 	if not can_attack_flag:
 		var current_time = Time.get_unix_time_from_system()
@@ -136,7 +149,6 @@ func record_attack() -> void:
 	can_attack_flag = false
 	attack_cooldown_timer = Time.get_unix_time_from_system()
 	current_attack_cycle += 1
-	# 🔹 Colisão permanece ativa para bloquear o player
 	enable_collision(true)
 
 func reset_attack_cycle() -> void:
@@ -144,13 +156,34 @@ func reset_attack_cycle() -> void:
 	can_attack_flag = true
 	attack_cooldown_timer = 0.0
 
+# -----------------------------------------------------------
+# 💥 DANO E PODER
 func take_damage(damage: int) -> void:
 	if is_blocking:
 		var reduced_damage = int(damage * 0.2)
-		print("🛡️ Blocked! Damage reduced to ", reduced_damage)
+		life = clamp(life - reduced_damage, 0, 100)
+		print("🛡️ Enemy bloqueou! Dano reduzido para ", reduced_damage)
 	else:
-		print("💥 Enemy took ", damage, " damage!")
+		life = clamp(life - damage, 0, 100)
+		print("💥 Enemy tomou ", damage, " de dano! Vida atual: ", life)
 
+	update_hud()
+
+	if life <= 0:
+		print("💀 Enemy derrotado!")
+
+func gain_power(amount: float) -> void:
+	power = clamp(power + amount, 0, 100)
+	print("⚡ Enemy ganhou ", amount, " de poder! Poder atual: ", power)
+	update_hud()
+
+func update_hud() -> void:
+	if hud:
+		hud.set_player2_life(life)
+		hud.set_player2_power(power)
+
+# -----------------------------------------------------------
+# 🩸 HITBOX
 func create_hitbox(damage: int, duration: float) -> void:
 	var hitbox = Area2D.new()
 	var collision = CollisionShape2D.new()
@@ -179,6 +212,7 @@ func _on_hitbox_body_entered(body: Node, damage: int) -> void:
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 
+# -----------------------------------------------------------
 func get_current_state_name() -> String:
 	if state_machine and state_machine.current_state:
 		return state_machine.current_state.name
@@ -189,3 +223,9 @@ func is_attacking() -> bool:
 		var name = state_machine.current_state.name
 		return "Attack" in name or "Punch" in name or "Kick" in name or "Special" in name
 	return false
+	
+var is_alive: bool = true
+
+func stop_ai():
+	set_process(false)
+	set_physics_process(false)

@@ -1,5 +1,5 @@
 class_name State
-extends Node # <- I Make This Node2D Later On
+extends Node
 
 func enter() -> void:
 	pass
