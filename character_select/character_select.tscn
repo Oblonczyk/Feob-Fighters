@@ -1,0 +1,227 @@
+[gd_scene load_steps=25 format=3 uid="uid://cubxr6yy70uw7"]
+
+[ext_resource type="Script" uid="uid://bqpqn64e63yyj" path="res://character_select/character_select.gd" id="1_461jc"]
+[ext_resource type="VideoStream" uid="uid://csqs2wxj18w0q" path="res://character_select/bg_gradient.ogv" id="2_g4o87"]
+[ext_resource type="Texture2D" uid="uid://wc7mdobcfaqh" path="res://character_select/3d/3d_carlao/2.png" id="4_48str"]
+[ext_resource type="Texture2D" uid="uid://bscn7qo65xg0g" path="res://character_select/3d/3d_carlao/4.png" id="5_g4o87"]
+[ext_resource type="Texture2D" uid="uid://qkyfoe7wm7w1" path="res://character_select/3d/3d_carlao/3.png" id="6_wtsmi"]
+[ext_resource type="Texture2D" uid="uid://cbkpwoufiw02l" path="res://character_select/3d/3d_luis/1.png" id="7_v8jmm"]
+[ext_resource type="Texture2D" uid="uid://d0tbwea06qw8l" path="res://character_select/3d/3d_luis/2.png" id="8_uob2h"]
+[ext_resource type="Texture2D" uid="uid://ce4402f45ccjy" path="res://character_select/3d/3d_luis/3.png" id="9_2eypo"]
+[ext_resource type="Texture2D" uid="uid://cduipbeqqrc1n" path="res://character_select/3d/3d_carlao/1.png" id="9_461jc"]
+[ext_resource type="Texture2D" uid="uid://isejd58ak4gh" path="res://character_select/3d/3d_luis/4.png" id="10_cn8n5"]
+[ext_resource type="Texture2D" uid="uid://cy27ldam0vugy" path="res://character_select/3d/3d-marcelo/1.png" id="11_2sbij"]
+[ext_resource type="Texture2D" uid="uid://dm8kta20chfdb" path="res://character_select/3d/3d-marcelo/2.png" id="12_g2h3c"]
+[ext_resource type="Texture2D" uid="uid://cyos3cxfoipp2" path="res://assets/Sprites/char1_portrait.jpg" id="12_iv4bj"]
+[ext_resource type="FontFile" uid="uid://ybawngooe8gm" path="res://character_select/edo_sz/edosz.ttf" id="12_pm01m"]
+[ext_resource type="Texture2D" uid="uid://b3sk3ygoa2rmo" path="res://character_select/3d/3d-marcelo/3.png" id="13_56dg3"]
+[ext_resource type="Texture2D" uid="uid://dhmpflwx7go6s" path="res://assets/Sprites/char4_portrait.jpg" id="13_pm01m"]
+[ext_resource type="Texture2D" uid="uid://bkvl30gjxa4ry" path="res://character_select/3d/3d-marcelo/4.png" id="14_m53pm"]
+[ext_resource type="Texture2D" uid="uid://cgkyw2ltsry0d" path="res://assets/Sprites/char2_portrait.jpg" id="14_sc7e3"]
+[ext_resource type="Texture2D" uid="uid://vledtc6weis0" path="res://character_select/3d/3d_marudi/3d1.png" id="15_g4o87"]
+[ext_resource type="Texture2D" uid="uid://8vr7owke3qjf" path="res://character_select/3d/3d_marudi/3d2.png" id="16_wtsmi"]
+[ext_resource type="Texture2D" uid="uid://cd0r0ovbkwgjp" path="res://character_select/3d/3d_marudi/3d3.png" id="17_v8jmm"]
+[ext_resource type="Texture2D" uid="uid://kvt37gbcahbb" path="res://character_select/3d/3d_marudi/3d4.png" id="18_uob2h"]
+[ext_resource type="Texture2D" uid="uid://b0o0hjfill448" path="res://character_select/char3_portrait.png" id="21_2eypo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_461jc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_461jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wtsmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g4o87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_48str")
+}],
+"loop": true,
+"name": &"CARLOS",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_v8jmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uob2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2eypo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cn8n5")
+}],
+"loop": true,
+"name": &"LUIS",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_2sbij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g2h3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_56dg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_m53pm")
+}],
+"loop": true,
+"name": &"MARCELO",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_g4o87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wtsmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v8jmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uob2h")
+}],
+"loop": true,
+"name": &"MARUDI",
+"speed": 2.0
+}]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_461jc")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1691.0
+offset_top = -137.0
+offset_right = 5428.6865
+offset_bottom = 2598.3345
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.57133085, 0.42890206)
+stream = ExtResource("2_g4o87")
+autoplay = true
+expand = true
+loop = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = 37.0
+offset_right = 62.0
+offset_bottom = 340.0
+grow_horizontal = 2
+
+[node name="LeftPlayer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/LeftPlayer"]
+position = Vector2(187.99997, 132)
+scale = Vector2(0.23271418, 0.22795625)
+sprite_frames = SubResource("SpriteFrames_461jc")
+animation = &"MARUDI"
+autoplay = "MARUDI"
+offset = Vector2(10, 50)
+
+[node name="BottomMenu" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = 205.5
+offset_right = 278.0
+offset_bottom = 300.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RETORNAR" type="Button" parent="BottomMenu"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("12_pm01m")
+theme_override_font_sizes/font_size = 42
+text = "RETORNAR"
+flat = true
+
+[node name="LUTA" type="Button" parent="BottomMenu"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("12_pm01m")
+theme_override_font_sizes/font_size = 42
+text = "LUTA"
+flat = true
+
+[node name="NOME_PERSONAGEM" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 350.0
+offset_right = 843.0
+offset_bottom = 402.0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("12_pm01m")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 407.0
+offset_right = 475.0
+offset_bottom = 508.0
+texture_normal = ExtResource("12_iv4bj")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 410.0
+offset_right = 655.0
+offset_bottom = 511.0
+texture_normal = ExtResource("14_sc7e3")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 411.0
+offset_right = 836.0
+offset_bottom = 512.0
+texture_normal = ExtResource("21_2eypo")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 411.0
+offset_right = 1001.0
+offset_bottom = 512.0
+texture_normal = ExtResource("13_pm01m")
+ignore_texture_size = true
+stretch_mode = 4

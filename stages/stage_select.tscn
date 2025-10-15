@@ -1,0 +1,160 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhlmr4w4cy3np"]
+
+[ext_resource type="Script" uid="uid://dgneum101l5lv" path="res://stage_select.gd" id="1_uxx3t"]
+[ext_resource type="Texture2D" uid="uid://bi0s851lcvgcr" path="res://assets/Stage Layers/IMG_3864.png" id="2_qybog"]
+[ext_resource type="Texture2D" uid="uid://dg54jr02ohajn" path="res://assets/Stage/btn_biblioteca.jpg" id="3_msbht"]
+[ext_resource type="Theme" uid="uid://ckuxb03cgmr5t" path="res://title_screen/title_screen.tres" id="3_q55ev"]
+[ext_resource type="Texture2D" uid="uid://k2un2fuumvw3" path="res://character_select/bg_gradient.png" id="3_qybog"]
+[ext_resource type="Texture2D" uid="uid://rl8oqjwolox5" path="res://assets/Stage/btn_cantina.jpg" id="4_qybog"]
+[ext_resource type="Texture2D" uid="uid://blp6ick51pwxf" path="res://assets/Stage/btn_quadra.jpg" id="5_lbh6h"]
+[ext_resource type="Texture2D" uid="uid://jwyc6g156ame" path="res://assets/Stage/btn_predio_e.jpg" id="6_53jr3"]
+[ext_resource type="Texture2D" uid="uid://beypid4qm41f6" path="res://assets/Stage/btn_predio_a.jpg" id="7_3ph5v"]
+[ext_resource type="Texture2D" uid="uid://by5cqnoiy5ufu" path="res://assets/Stage/campus_unifeob.jpg" id="7_53jr3"]
+[ext_resource type="Texture2D" uid="uid://daqa16a08dslr" path="res://assets/Stage/btn_estacionamento.jpg" id="9_f8f1l"]
+[ext_resource type="FontFile" uid="uid://ybawngooe8gm" path="res://character_select/edo_sz/edosz.ttf" id="12_qybog"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbh6h"]
+line_spacing = 9.0
+font = ExtResource("12_qybog")
+font_size = 47
+
+[node name="StageSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxx3t")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1287.0
+offset_bottom = 1630.0
+texture = ExtResource("3_qybog")
+
+[node name="LUTA" type="Button" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 463.0
+offset_right = 865.0
+offset_bottom = 519.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("12_qybog")
+theme_override_font_sizes/font_size = 42
+text = "LUTA"
+flat = true
+
+[node name="RETORNAR" type="Button" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 465.0
+offset_right = 622.0
+offset_bottom = 521.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("12_qybog")
+theme_override_font_sizes/font_size = 42
+text = "RETORNAR"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -630.0
+offset_top = 39.0
+offset_right = 630.0
+offset_bottom = 389.0
+grow_horizontal = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="btn_laboratorio" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("2_qybog")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_biblioteca" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("3_msbht")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_cantina" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("4_qybog")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_quadra" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("5_lbh6h")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_predio_e" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("6_53jr3")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_predio_a" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("7_3ph5v")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_campus_unifeob" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("7_53jr3")
+icon_alignment = 1
+expand_icon = true
+
+[node name="btn_estacionamento" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+disabled = true
+icon = ExtResource("9_f8f1l")
+icon_alignment = 1
+expand_icon = true
+
+[node name="nome_cenario" type="Label" parent="."]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 332.0
+offset_right = 971.0
+offset_bottom = 400.0
+theme = ExtResource("3_q55ev")
+label_settings = SubResource("LabelSettings_lbh6h")
+horizontal_alignment = 1
+vertical_alignment = 1
