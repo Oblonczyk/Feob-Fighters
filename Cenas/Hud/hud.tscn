@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://bkufcu0jypesn"]
+
+[ext_resource type="Script" uid="uid://b1n5h2sj3qt4i" path="res://hud.gd" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://bl1rprvinlxod" path="res://Assets/menu/lifebarleft.png" id="2_640wx"]
+[ext_resource type="Texture2D" uid="uid://cawae6pkmln8l" path="res://Assets/menu/lifebarright.png" id="3_a2258"]
+[ext_resource type="Texture2D" uid="uid://63byoaj0wq7g" path="res://Assets/menu/vsimage.webp" id="4_640wx"]
+[ext_resource type="Texture2D" uid="uid://drb2xbf1ocds0" path="res://Assets/menu/face1.png" id="5_1xsix"]
+[ext_resource type="Texture2D" uid="uid://k86qs20uqu0w" path="res://Assets/menu/face2.png" id="6_rftc2"]
+
+[sub_resource type="Gradient" id="Gradient_37p78"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.7633286, 0, 0.13053626, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_64ctp"]
+gradient = SubResource("Gradient_37p78")
+
+[sub_resource type="Gradient" id="Gradient_8sq4i"]
+offsets = PackedFloat32Array(0.8089431)
+colors = PackedColorArray(0, 0.84313726, 0.043137256, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_640wx"]
+gradient = SubResource("Gradient_8sq4i")
+
+[sub_resource type="Gradient" id="Gradient_a2258"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1xsix"]
+gradient = SubResource("Gradient_a2258")
+
+[sub_resource type="Gradient" id="Gradient_rftc2"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.6313726, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_61f8s"]
+gradient = SubResource("Gradient_rftc2")
+
+[node name="HUD" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_37p78")
+player1_path = NodePath("Player1UI")
+player2_path = NodePath("Player2UI")
+
+[node name="Player1UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1134.4055
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.575, 0.275)
+
+[node name="StyleImage" type="NinePatchRect" parent="Player1UI"]
+layout_mode = 0
+offset_left = 11.468531
+offset_top = -54.54547
+offset_right = 143.46854
+offset_bottom = 944.4545
+texture = ExtResource("2_640wx")
+
+[node name="LifeBar" type="TextureProgressBar" parent="Player1UI"]
+layout_mode = 0
+offset_left = 62.468533
+offset_top = 353.45453
+offset_right = 126.46854
+offset_bottom = 417.45453
+texture_under = SubResource("GradientTexture2D_64ctp")
+texture_progress = SubResource("GradientTexture2D_640wx")
+
+[node name="PowerBar" type="TextureProgressBar" parent="Player1UI"]
+layout_mode = 0
+offset_left = 62.468533
+offset_top = 430.45453
+offset_right = 126.46854
+offset_bottom = 494.45453
+texture_under = SubResource("GradientTexture2D_1xsix")
+texture_progress = SubResource("GradientTexture2D_61f8s")
+
+[node name="Player2UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 723.0
+offset_top = 4.9999986
+offset_right = -411.40552
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.575, 0.275)
+
+[node name="StyleImage" type="NinePatchRect" parent="Player2UI"]
+layout_mode = 0
+offset_left = 11.468531
+offset_top = -79.99997
+offset_right = 143.46854
+offset_bottom = 919.0
+texture = ExtResource("3_a2258")
+
+[node name="LifeBar" type="TextureProgressBar" parent="Player2UI"]
+layout_mode = 0
+offset_left = 30.860134
+offset_top = 327.99994
+offset_right = 94.86014
+offset_bottom = 391.99994
+fill_mode = 1
+texture_under = SubResource("GradientTexture2D_64ctp")
+texture_progress = SubResource("GradientTexture2D_640wx")
+
+[node name="PowerBar" type="TextureProgressBar" parent="Player2UI"]
+layout_mode = 0
+offset_left = 30.860134
+offset_top = 404.99982
+offset_right = 94.86014
+offset_bottom = 468.99982
+texture_under = SubResource("GradientTexture2D_1xsix")
+texture_progress = SubResource("GradientTexture2D_61f8s")
+
+[node name="VsImage" type="NinePatchRect" parent="."]
+offset_left = 458.0
+offset_top = 4.0
+offset_right = 870.0
+offset_bottom = 259.0
+texture = ExtResource("4_640wx")
+
+[node name="Player1Face" type="NinePatchRect" parent="."]
+offset_left = 92.0
+offset_top = 94.0
+offset_right = 200.0
+offset_bottom = 195.0
+texture = ExtResource("5_1xsix")
+
+[node name="Player2Face" type="NinePatchRect" parent="."]
+offset_left = 1079.0
+offset_top = 96.0
+offset_right = 1192.0
+offset_bottom = 193.0
+texture = ExtResource("6_rftc2")

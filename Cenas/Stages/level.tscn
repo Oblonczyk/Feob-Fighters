@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbh7vfwn0itny"]
+
+[ext_resource type="PackedScene" uid="uid://d1nnnjak6u03t" path="res://Cenas/Inimigo/enemy.tscn" id="1_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bgbsiyhnm6qf4" path="res://Cenas/Player/player.tscn" id="1_vonw3"]
+[ext_resource type="Texture2D" uid="uid://bi0s851lcvgcr" path="res://Assets/Stage Layers/IMG_3864.png" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bkufcu0jypesn" path="res://Cenas/Hud/hud.tscn" id="4_f2txt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2txt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0b4ue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0b4ue"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f2txt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
+size = Vector2(569, 207)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
+size = Vector2(269, 410)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2txt"]
+size = Vector2(241.5, 420)
+
+[node name="Level" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.5, 9.49998)
+scale = Vector2(0.0754552, 0.0567227)
+sprite_frames = SubResource("SpriteFrames_f2txt")
+
+[node name="Player" parent="." groups=["fighters"] instance=ExtResource("1_vonw3")]
+position = Vector2(180, 47)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
+position = Vector2(-4, 7)
+zoom = Vector2(3, 3)
+
+[node name="Enemy" parent="." groups=["fighters"] instance=ExtResource("1_0b4ue")]
+position = Vector2(-182, 21)
+player_path = NodePath("../Player")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+material = SubResource("CanvasItemMaterial_0b4ue")
+position = Vector2(-61, 91)
+collision_layer = 271
+collision_mask = 271
+physics_material_override = SubResource("PhysicsMaterial_f2txt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(60, 78)
+shape = SubResource("RectangleShape2D_1ainy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(4, -366)
+shape = SubResource("RectangleShape2D_1ainy")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-51, -46)
+collision_layer = 271
+collision_mask = 271
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-276.5, 46)
+shape = SubResource("RectangleShape2D_0b4ue")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+collision_layer = 271
+collision_mask = 271
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(306.75, -2)
+shape = SubResource("RectangleShape2D_f2txt")
+
+[node name="HUD" parent="." instance=ExtResource("4_f2txt")]
+layer = 3
+player1_path = NodePath("../Player")
+player2_path = NodePath("../Enemy")
